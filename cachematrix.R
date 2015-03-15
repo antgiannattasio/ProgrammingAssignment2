@@ -4,12 +4,14 @@
 ## Write a short comment describing this function
 
 makeCacheMatrix <- function(x = matrix()) { 
-
+        switchon <- NULL
         m <- NULL                      #Here the functions is identical to the makeVector(), only
                                         #the argument of the function changes from x= numeric() to x=matrix()
         set <- function(y) {
                 x <<- y
+                matr <<- y
                 m <<- NULL
+                switchon <<- NULL
         }
         get <- function() x
         setmean <- function(mean) m <<- mean
@@ -42,6 +44,29 @@ cachemean <- function(x = matrix(), ...) {  #the function is very similar to the
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
+#                                               So let's se how we can deal with this last function
+                                                #someone said that would copy this code and write it down
+                                                #on their projects.R... DO IT!!!!! hihihihihiihi
+                                                #Ok let's se the code:
+storer<- makeCacheMatrix() #create the object... into this there will be the cash stored and the logic
+                                                #that permits to the function to understand if what 
+                                                #we have in the object is similar on what we have already
+                                                #in the cache... in programmer terms... Set a switch...
+                                                #if m is active (it exists) then somebody switched it on
+                                                #and therefore something is stored in the cache....
+                                                #this is the story in brief...
+if (!is.null(switchon)) {
+#Put the matrix in the object
+
+#compute the inverse
+
+caachemean(storer$get()) }
+
+else  {
+
+        cachemean(storer$set(x))
+caachemean(storer$get()) }
+
 }
 
 
