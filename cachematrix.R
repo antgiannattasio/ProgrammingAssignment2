@@ -33,6 +33,16 @@ cachemean <- function(x = matrix(), ...) {  #the function is very similar to the
         }                                   #last function at the bottom of this file...
                                                 #Wish me good luck... Thank you for you attention :D
         data <- x[[2]]()
+
+
+cachemean <- function(x = matrix(), ...) {  #the function is very similar to the chachemean, I retained the same name
+        m <- x$getmean()                    #to not incur some bug and as programmerssay... "a good programmer is a lazy
+        if(!is.null(m)) {                   #programmer.... So why should somebody change something that already works as
+                message("getting cached data") #it is.... only a food can do that.... so now I will concentrate to how I can 
+                return(m)                   #finish this assignment writing the last function at the bottom of this file...
+        }                                   #Wish me good luck... Thank you for you attention :D
+        data <- x$get()
+
         m <- solve(data, ...)
         x$setmean(m)
         m
