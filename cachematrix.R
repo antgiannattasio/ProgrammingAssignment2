@@ -4,7 +4,7 @@
 ## Write a short comment describing this function
 
 makeCacheMatrix <- function(x = matrix()) { 
-        switchon <- NULL
+        switchon <<- NULL
         m <- NULL                      #Here the functions is identical to the makeVector(), only
                                         #the argument of the function changes from x= numeric() to x=matrix()
         set <- function(y) {
@@ -24,7 +24,7 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cachemean <- function(x = matrix(), ...) {  #the function is very similar to the chachemean, I retained the 
                                             #same name
-        m <- x$getmean()                    #to not incur some bug and as programmers say... "a good 
+        m <- x[[4]]()                    #to not incur some bug and as programmers say... "a good 
                                             #programmer is a lazy programmer....... So why should somebody
                                             #changes something that already works as it is....
         if(!is.null(m)) {                   
@@ -32,7 +32,7 @@ cachemean <- function(x = matrix(), ...) {  #the function is very similar to the
                 return(m)                   # to how I can finish this assignment writing the 
         }                                   #last function at the bottom of this file...
                                                 #Wish me good luck... Thank you for you attention :D
-        data <- x$get()
+        data <- x[[2]]()
         m <- solve(data, ...)
         x$setmean(m)
         m
@@ -42,13 +42,13 @@ cachemean <- function(x = matrix(), ...) {  #the function is very similar to the
 
 ## Write a short comment describing this function
 
-cacheSolve <- function(x, ...) {
+cacheSolve <- function(x=matrix(), ...) {
         ## Return a matrix that is the inverse of 'x'
 #                                               So let's se how we can deal with this last function
                                                 #someone said that would copy this code and write it down
                                                 #on their projects.R... DO IT!!!!! hihihihihiihi
                                                 #Ok let's se the code:
-storer<- makeCacheMatrix() #create the object... into this there will be the cash stored and the logic
+storer <<- makeCacheMatrix(x) #create the object... into this there will be the cash stored and the logic
                                                 #that permits to the function to understand if what 
                                                 #we have in the object is similar on what we have already
                                                 #in the cache... in programmer terms... Set a switch...
@@ -60,14 +60,16 @@ if (!is.null(switchon)) {
 
 #compute the inverse
 
-caachemean(storer$get()) }
+storer$set(x) }
 
 else  {
 
-        cachemean(storer$set(x))
-caachemean(storer$get()) }
+        storer$set(x)
+        
+storer$get() }
 
 }
+
 
 
  
